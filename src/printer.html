@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上传打印</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+    <style>
+        * {
+            box-sizing: unset;
+        }
+
+        .c_navbar {
+            background-color: #464646;
+            border-color: #e7e7e700;
+        }
+
+        .c_navbar .c_cot {
+            width: 90%;
+        }
+
+        .c_navbar .c_cot .c_header {
+            display: inline-block;
+            width: 16%;
+            height: 75px;
+        }
+
+        .c_navbar .c_cot .nav_menu_li {
+            margin-right: 1vh;
+        }
+
+        .c_navbar .c_cot .nav_menu_li .nav_menu_font {
+            line-height: 44px;
+            font-size: 21px;
+            color: #fff;
+            margin-right: 14px;
+            font-weight: normal;
+        }
+
+        .c_navbar .c_cot .btn_login {
+            border: 3px solid #fff;
+            border-radius: 18px;
+            height: 40px;
+            /* line-height: 75px; */
+            margin-top: 19px;
+            width: 74px;
+            height: 36px;
+
+        }
+
+        .c_navbar .c_cot .btn_login a {
+            font-weight: normal;
+            color: #fff;
+            line-height: 0;
+            font-size: 18px;
+        }
+
+        .footer {
+            background: #808080a1;
+        }
+
+        .footer div {
+            margin-bottom: 10px;
+        }
+
+        .footer div div .f_img {
+            width: 8%;
+            display: inline-block;
+            margin-left: 13.6%;
+        }
+
+        .footer div div h3 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .coupon-inner p{
+            line-height: 18px;
+            margin-left: 12px;
+            font-size:12px
+        }
+        .coupon-inner p span{
+            display: inline-block;
+            width: 10px;height: 10px;
+            vertical-align: middle;
+            border-radius: 50%;
+            border:1px solid #000
+        }
+        .coupon-inner p span:nth-child(1){
+            background-color: #000;
+        }
+        .coupon-inner p span:nth-child(2){
+            background-color: #fff;
+        }
+        .coupon-inner p span:nth-child(3){
+            background-color: red;
+        }
+
+        .footer {
+            background: #808080a1;
+        }
+        .footer div {
+            margin-bottom: 10px;
+        }
+        .footer div div .f_img {
+            width: 8%;
+            display: inline-block;
+            margin-left: 10.5%;
+        }
+        .footer div div h3 {
+            font-size: 24px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .hero.size-large {
+            height: 80vh;
+            margin-top: -13vh;
+        }
+        .hero.size-large .hero-image {
+            height: 80vh;
+        }
+
+        a {
+            color: #1ac272;
+            text-decoration: none;
+            line-height: inherit;
+            cursor: pointer;
+        }
+
+        a {
+            background-color: transparent;
+        }
+
+
+
+
+    </style>
+
+    <link rel="stylesheet" href="Less/style.css">
+
+</head>
+<body style="">
+
+
+<nav class="navbar navbar-default c_navbar navbar-static-top" role="navigation">
+    <div class="container c_cot">
+        <div class="navbar-header c_header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                <span class="sr-only">切换导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="images/brand.png" alt="" class=" center-block brand_img hidden-md hidden-xs hidden-sm" style="width: 200px" >
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="cative nav_menu_li"><a href="index.html" class="nav_menu_font">首页</a></li>
+                <li class="cative nav_menu_li"><a href="modelbase.html" class="nav_menu_font">模型库</a></li>
+                <li class="cative nav_menu_li"><a href="#" class="nav_menu_font">在线建模</a></li>
+                <li class="cative nav_menu_li"><a href="#" class="nav_menu_font">在线打印</a></li>
+                <li class="cative nav_menu_li"><a href="dist_shequ/index.html" class="nav_menu_font">社区</a></li>
+                <li class="cative nav_menu_li"><a href="dist_about/dist_about/index.html" class="nav_menu_font">关于</a>
+                </li>
+                <li class="cative nav_menu_li btn_login" style="text-align: center;height: 36px">
+                    <a href="http://120.79.148.35:3010/#/login">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row section-title">
+        <div class="col-md-12 text-center" style="margin: 0 0 15px 0">
+            <h2>请选择合适的打印机</h2>
+        </div>
+    </div>
+    <form role="search"  method="GET" class="row search-form">
+        <div class="col-md-8 col-md-push-2">
+            <div class="search-wrapper">
+                <div class="search-container">
+                    <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                        <input type="text" class="store-search typeahead form-control tt-hint" readonly=""
+                               autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr"
+                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 97% 50% / auto 60% no-repeat scroll padding-box border-box rgb(255, 255, 255);"><input
+                            type="text" name="term" placeholder="搜索附近打印机" required=""
+                            class="store-search typeahead form-control tt-input" autocomplete="off" spellcheck="false"
+                            dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre
+                            aria-hidden="true"
+                            style="position: absolute; visibility: hidden; white-space: pre; font-size: 15px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div
+                            class="tt-menu"
+                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                            class="tt-dataset tt-dataset-stores"></div><div
+                            class="tt-dataset tt-dataset-categories"></div></div></span></div>
+                <button type="submit" class="btn-primary btn" style="background-color: #1ac272;"><span class="icon icon-search"></span>快速搜索</button>
+            </div>
+        </div>
+    </form>
+    <div class="section-title">
+        <div class="col-md-12">
+            <div class="search-links" style="margin: 6px 0 30px 0"><p>离你最近的打印机在 </p><a href="#" title="Amazon Promo Codes">佛山南海研究院</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <ul class="popular-stores clearfix">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;" ><img src="images/printer1.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-lg">
+                    </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                            <span ></span>
+
+                            <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer2.jpg" alt=""
+                                                                                                                  data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer3.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer1.jpg" alt=""
+                                                                                                                  data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 空闲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer3.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer1.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer2.jpg" alt=""
+                                                                                                                  data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 空闲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="coupon coupon-column">
+                    <div class="coupon-inner">
+                        <a href="#" 
+                           class="related-logo store-logo" style="margin:12px auto;height:125px;width:100%;"><img src="images/printer1.jpg" alt="" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        </a>
+                        <p>类型: Printer i3</p>
+                        <p>尺寸: 20x20x20 mm³</p>
+                        <p>材料: PLA ABS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p style="margin-left: 12px;font-size:12px">颜色: <span ></span>
+                        <span ></span>
+
+                        <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p style="margin-left: 12px;font-size:12px">状态: 打印中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <p>地点: 佛山南海研究院</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </ul>
+        <div class="col-xs-12" style="margin-bottom: 20px">
+            <p class="text-center"><a href="#">查看所有打印机<span
+                class="icon icon-arrow-right"></span></a></p></div>
+        </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg clearfix" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"  >
+    <div class="modal-dialog modal-lg" role="document" style="width: 800px;margin-top:200px;">
+        <div class="modal-content text-center" style="padding: 10px">
+           <div style="border: 1px dashed #000;border-radius: 5px" class="Modal">
+               <form action="" >
+                   <input type="file" class="hidden-lg hidden-md hidden-xs hidden-sm">
+               </form>
+               <button class="btn" style="margin: 70px auto;background-color: #1ac272;color: white;border-radius: 10px">拖动文件上传</button>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid footer">
+    <div class="row">
+        <div class="col-lg-2 col-lg-offset-5">
+            <h3 class="h_word">联系我们</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+            <img src="images/wechat.png" alt="" class="img-responsive center-block f_img">
+            <img src="images/qq.png" alt="" class="img-responsive center-block f_img">
+            <img src="images/weibo.png" alt="" class="img-responsive center-block f_img">
+            <img src="images/facebook.png" alt="" class="img-responsive center-block f_img">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+            <h3>地址：广东省广州大学城广东工业大学E110</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+            <h3>@2018-2019 Printors.Allright reserved.</h3>
+        </div>
+    </div>
+</div>
+
+<script src="Jquery/jquery-1.12.4.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+
+<script>
+    var timer;
+    var $modal=$(".Modal");
+    $modal.mouseenter(function () {
+        clearInterval(timer);
+        timer=setInterval(function () {
+            window.location.href="printing.html";
+
+        },1000);
+    });
+</script>
+
+</body>
+</html>
