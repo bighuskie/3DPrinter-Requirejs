@@ -1,4 +1,4 @@
-(function (window) {
+define(function (window) {
     //预览图的元素
     var divCanvas = document.getElementById("canvas3d");
     //预览图的宽高
@@ -9,51 +9,11 @@
     var btn = document.getElementById("btn");
 
 
-    // //sessionStorage变量->文件名
-    // var Storage = sessionStorage.getItem("data");
 
-    // var filename = sessionStorage.getItem("fileName");
+    // window.x_size=x_size;
+    // window.y_size=y_size;
+    // window.z_size=z_size;
 
-
-
-    // //全局变量->文件名(读取文件用)
-    // var fileName;
-    // window.fileName=fileName;
-    // //全局变量->文件名(读取文件名)
-    // var f_name;
-    // window.f_name=f_name;
-
-
-    // //判断是否有本地缓存（5M以下）
-    // if (isNaN(Storage)) {
-    //     fileName = Storage;
-    //     f_name = filename;
-    //     //删除缓存
-    //     sessionStorage.setItem("data", null);
-    //     sessionStorage.setItem("filename", null);
-    // }
-
-
-    // //读取文件信息的函数
-    // function readURL(input) {
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-    //         reader.onload = function (e) {
-    //             //得到文件名(base64编码)
-    //             fileName = e.target.result;
-    //             divCanvas.removeChild(renderer.domElement);
-    //             threeStart();
-    //         };
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
-    //模型大小的显示span
-    var x_size = document.getElementsByClassName("x_size")[0];
-    var y_size = document.getElementsByClassName("y_size")[0];
-    var z_size = document.getElementsByClassName("z_size")[0];
-    window.x_size=x_size;
-    window.y_size=y_size;
-    window.z_size=z_size;
     //上传预览按钮
     // var INPUT = document.getElementById("fileField");
     // var file_name = document.getElementsByClassName("fileName")[0];
@@ -85,38 +45,8 @@
 
     });
 
-
-
-    // //文件名处理
-    // if (!fileName) {
-    //     fileName = 'static/module/bike_frame.stl'
-    // } else {
-
-    // }
-
-
-    // INPUT.onchange = function () {
-
-    //     //获取文件路径
-    //     var path = INPUT.value;
-
-    //     // 截取文件名后缀
-    //     var file = path.substr(path.lastIndexOf("."));
-    //     test = this.files[0].name;
-    //     SIZE = this.files[0].size;
-    //     file_name.innerHTML = this.files[0].name || f_name;
-
-
-    //     if (file !== ".stl") {
-    //         INPUT.value = "";
-    //         return;
-    //     } else {
-    //         readURL(INPUT,renderer);
-    //     }
-    // };
-
-     //读取文件信息的函数,刷新视图
-     function readURL(input) {
+    //读取文件信息的函数,刷新视图
+    function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -133,10 +63,7 @@
 
     //相机的相应参数
     var container;
-
     var camera, cameraTarget, scene, renderer, helper;
-    // window.renderer=renderer;
-
     var perspectiveAngle = 45;
     var cameraPosX = 900;
     var cameraPosY = 1200;
@@ -152,9 +79,13 @@
     var Money = 0;
 
 
-
     //模型大小比例1:1
     var model_x = model_y = model_z = 1;
+    //模型大小参数
+    var module_x = 0;
+    var module_y = 0;
+    var module_z = 0;
+    //加载模型初始化函数
     function init() {
         camera = new THREE.PerspectiveCamera(perspectiveAngle, 1, 1, 10000);
         camera.position.set(cameraPosX, cameraPosY, cameraPosZ);
@@ -163,8 +94,6 @@
         camera.lookAt(cameraTarget);
         scene = new THREE.Scene();
         scene.fog = new THREE.Fog(0xffffff, 0, 9000);
-
-
 
         // 实例stlloader
         var loader = new THREE.STLLoader();
@@ -183,19 +112,9 @@
             var boundbox = geometry.boundingBox;
             //模型尺寸
             module_x = (boundbox.max.x - boundbox.min.x).toFixed(0);
-            module_y = (boundbox.max.x - boundbox.min.y).toFixed(0);
-            module_z = (boundbox.max.x - boundbox.min.z).toFixed(0);
-            if (module_x == -Infinity) {
-                return;
-            } else {
-                x_size.innerHTML = Math.abs(module_x) + "mm x";
-                y_size.innerHTML = Math.abs(module_y) + "mm x";
-                z_size.innerHTML = Math.abs(module_z) + "mm";
-                total = Math.abs(module_x * module_y * module_z);
-                Money = Math.ceil(total * 0.00008);
-                document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-                MONEY = "￥" + Money * Number;
-            }
+            module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
+            module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
+
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);
@@ -287,5 +206,5 @@
         init();
         animate();
     }
-    window.loadStl={threeStart,readURL};
-})(window)
+    return { threeStart, readURL, module_x, module_y, module_z };
+});

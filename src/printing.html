@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>在线打印</title>
-    <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
-
+    <link type="image/x-icon" rel="shortcut icon" href="assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Less/cloud_printer.css">
-    <link rel="stylesheet" href="Less/upload.css">
+    <link rel="stylesheet" href="assets/Less/cloud_printer.css">
+    <!-- <link rel="stylesheet" href="assets/Less/upload.css"> -->
 </head>
 
-<body onload="loadStl.threeStart();">
+<body style="overflow:hidden">
+    <!-- 头部导航 -->
     <div>
         <nav class="navbar navbar-default c_navbar navbar-static-top" role="navigation">
             <div class="container c_cot">
@@ -26,7 +26,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="images/brand.png" alt="" class="img-responsive center-block brand_img hidden-xs">
+                        <img src="assets/images/brand.png" alt="" class="img-responsive center-block brand_img hidden-xs">
                     </a>
                 </div>
 
@@ -40,7 +40,7 @@
                         <li class="cative nav_menu_li"><a href="http://120.79.148.35:3010/about" class="nav_menu_font">关于</a></li>
                         <li class="cative nav_menu_li btn_login login_img">
                             <a href="http://120.79.148.35:3010/#/login">
-                                <img src="images/login.png" class="img-circle">
+                                <img src="assets/images/login.png" class="img-circle">
                                 <span>user_test</span>
                             </a>
                         </li>
@@ -50,7 +50,7 @@
         </nav>
     </div>
 
-
+    <!-- 模型预览与相关信息显示 -->
     <div class="container-fluid" id="prev">
         <div class="row">
             <div class="col-md-7 prev_left clearfix">
@@ -63,31 +63,30 @@
             </div>
             <div class="col-md-5 prev_right">
                 <ul>
-
                     <li>
-                        <img src="images/cloud.png" alt="" class="img-responsive">
+                        <img src="assets/images/cloud.png" alt="" class="img-responsive">
                         <span>打印机类型:</span>&nbsp;
                         <span>Printors i3</span>
                     </li>
                     <li>
-                        <img src="images/locate.png" alt="" class="img-responsive">
+                        <img src="assets/images/locate.png" alt="" class="img-responsive">
                         <span>打印机地点:</span>&nbsp;
                         <span>昆明理工大学呈贡校区综合性体育运动馆</span>
                     </li>
                     <li>
-                        <img src="images/file.png" alt="" class="img-responsive file_png">
+                        <img src="assets/images/file.png" alt="" class="img-responsive file_png">
                         <span>文件名:</span>&nbsp;
                         <span class="fileName">xxx.stl</span>
                     </li>
                     <li>
-                        <img src="images/resize-full-alt.png" alt="" class="img-responsive resize_png">
+                        <img src="assets/images/resize-full-alt.png" alt="" class="img-responsive resize_png">
                         <span>尺寸大小:</span>&nbsp;
                         <span class="x_size">0mm x </span>
                         <span class="y_size">0mm x </span>
                         <span class="z_size">0mm</span>
                     </li>
                     <li>
-                        <img src="images/pla.png" alt="" class="img-responsive pla_png">
+                        <img src="assets/images/pla.png" alt="" class="img-responsive pla_png">
                         <span>耗材:</span>&nbsp;
                         <div class="select">
                             <select>
@@ -97,7 +96,7 @@
                         <span class="price"> *0.8元/g</span>
                     </li>
                     <li>
-                        <img src="images/size.png" alt="" class="img-responsive size_png">
+                        <img src="assets/images/size.png" alt="" class="img-responsive size_png">
                         <span>模型比例:</span>&nbsp;
                         <div class="pro_bar">
                             <div class="progress">
@@ -108,7 +107,7 @@
                         </div>
                     </li>
                     <li>
-                        <img src="images/type.png" alt="" class="img-responsive type_png">
+                        <img src="assets/images/type.png" alt="" class="img-responsive type_png">
                         <span>打印模式:</span>&nbsp;
                         <div class="pri_type">
                             <div class="btn-group " role="group" aria-label="...">
@@ -120,19 +119,19 @@
                         </div>
                     </li>
                     <li>
-                        <img src="images/number.png" alt="" class="img-responsive number_png">
+                        <img src="assets/images/number.png" alt="" class="img-responsive number_png">
                         <span>数量:</span>&nbsp;
                         <div class="btn-group number" role="group" aria-label="...">
                             <span class="down">-</span><span class="num">1</span><span class="add">+</span>
                         </div>
                     </li>
                     <li>
-                        <img src="images/time.png" alt="" class="img-responsive time_png">
+                        <img src="assets/images/time.png" alt="" class="img-responsive time_png">
                         <span>预估时间:</span>&nbsp;
                         <span class="time">2 h 30 min</span>
                     </li>
                     <li>
-                        <img src="images/price.png" alt="" class="img-responsive price_png">
+                        <img src="assets/images/price.png" alt="" class="img-responsive price_png">
                         <span>总价:</span>&nbsp;
                         <span class="money">￥0</span>
                     </li>
@@ -146,257 +145,259 @@
         </div>
     </div>
 
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">购物车</div>
-                <div class="panel-body shopping">
-                    <table class="table text-center tb_queue">
-                        <tr class="main">
-                            <td>订单文件名</td>
-                            <td>订单编号</td>
-                            <td>模型信息</td>
-                            <td>模型数量</td>
-                            <td>金额</td>
-                            <td>管理</td>
-                        </tr>
-                    </table>
-                    <div class="text-right">
-                        <span class="sumMoney ">￥ 0</span>
-                        <a class="sumAll" href="#">合计</a>
-                    </div>
+    <!-- 购物车及底部信息 -->
+    <div class="container-fluid" id="shopCar-wrapper">
+        <div class="panel panel-default">
+            <div class="panel-heading">购物车</div>
+            <div class="panel-body shopping">
+                <table class="table text-center tb_queue">
+                    <tr class="main">
+                        <td>订单文件名</td>
+                        <td>订单编号</td>
+                        <td>模型信息</td>
+                        <td>模型数量</td>
+                        <td>金额</td>
+                        <td>管理</td>
+                    </tr>
+                </table>
+                <div class="text-right">
+                    <span class="sumMoney">￥0</span>
+                    <a class="sumAll btn btn-success" href="#">合计</a>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="clearfix">
-            <div class="container-fluid footer">
-                <div class="row">
-                    <div class="col-lg-2 col-lg-offset-5">
-                        <h3 class="h_word">联系我们</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 text-center">
-                        <img src="images/wechat.png" alt="" class="img-responsive center-block f_img">
-                        <img src="images/qq.png" alt="" class="img-responsive center-block f_img">
-                        <img src="images/weibo.png" alt="" class="img-responsive center-block f_img">
-                        <img src="images/facebook.png" alt="" class="img-responsive center-block f_img">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
-                        <h3>地址：广东省广州大学城广东工业大学E110</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
-                        <h3>@2017-2018 Printors.Allright reserved.</h3>
-                    </div>
+    </div>
+    <!-- 底部信息部分 -->
+    <div class="clearfix">
+        <div class="container-fluid footer">
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-5">
+                    <h3 class="h_word">联系我们</h3>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4 text-center">
+                    <img src="assets/images/wechat.png" alt="" class="img-responsive center-block f_img">
+                    <img src="assets/images/qq.png" alt="" class="img-responsive center-block f_img">
+                    <img src="assets/images/weibo.png" alt="" class="img-responsive center-block f_img">
+                    <img src="assets/images/facebook.png" alt="" class="img-responsive center-block f_img">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+                    <h3>地址：广东省广州大学城广东工业大学E110</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+                    <h3>@2017-2018 Printors.Allright reserved.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- 类似蒙版打印文件界面 -->
+    <div class="container-fluid">
+        <div id="upload-wrapper">
+            <div class="img-wrapper"></div>
+            <div class="upload">
+                <a class="btn-upload text-center" href="javascript:;">上传文件</a>
+                <div class="text-wrapper text-center">*支持stl、obj文件*</div>
+            </div>
         </div>
     </div>
 
 
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/libs/threejs/three.js"></script>
     <script src="assets/js/libs/threejs/loaders/STLLoader.js"></script>
     <script src="assets/js/libs/threejs/OrbitControls.js"></script>
-    <script src="assets/js/loadStl.js"></script>
-    <script src="assets/js/handleStl.js"></script>
+    <script src="./assets/js/libs/require.js" data-main="./index.js"></script>
 
 
     <script>
 
 
 
-        /**********************j监听窗口变化解决画布不响应的问题*************************/
+        // /**********************j监听窗口变化解决画布不响应的问题*************************/
 
-        //监听窗口变化，重新加载页面
-        var timer = null;
-        window.onresize = function () {
-            clearInterval(timer);
+        // //监听窗口变化，重新加载页面
+        // var timer = null;
+        // window.onresize = function () {
+        //     clearInterval(timer);
 
-            //进行节流
+        //     //进行节流
 
-            timer = setTimeout(function () {
-                location.reload()
-            }, 200);
-        };
-
-
-        /************************js进度条***************************/
+        //     timer = setTimeout(function () {
+        //         location.reload()
+        //     }, 200);
+        // };
 
 
-        var module_x;
-        var module_y;
-        var module_z;
+        // /************************js进度条***************************/
 
 
-        //得到进度条的所需元素
-        var pro_bar = document.getElementsByClassName("pro_bar");
-        var progress = document.getElementsByClassName("progress")[0];
-        var progress_bar = document.getElementsByClassName("progress-bar")[0];
-        var mask = document.getElementsByClassName("pro_control")[0];
-        var progress_value = document.getElementById("progress_value");
+        // var module_x;
+        // var module_y;
+        // var module_z;
 
 
-        //鼠标按下出发事件对象
-        mask.onmousedown = function (event) {
-            var e = event || window.event;
+        // //得到进度条的所需元素
+        // var pro_bar = document.getElementsByClassName("pro_bar");
+        // var progress = document.getElementsByClassName("progress")[0];
+        // var progress_bar = document.getElementsByClassName("progress-bar")[0];
+        // var mask = document.getElementsByClassName("pro_control")[0];
+        // var progress_value = document.getElementById("progress_value");
 
 
-            // 2.1 获取初始位置
-            var offsetLeft = e.clientX - mask.offsetLeft;
-
-            // 2.2 监听鼠标的移动
-            document.onmousemove = function (event) {
-                var e = event || window.event;
-
-                // 2.3 获取移动的位置
-                var x = e.clientX - offsetLeft;
-
-                // 边界值处理
-                if (x < 0) {
-                    x = 0;
-                } else if (x >= progress.offsetWidth - mask.offsetWidth) {
-                    x = progress.offsetWidth - mask.offsetWidth;
-                }
-
-                // 2.4 走起来
-
-                progress_bar.style.width = x + 'px';
-                mask.style.left = x + 'px';
-                var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
-                progress_value.innerHTML = proMove + '%';
+        // //鼠标按下出发事件对象
+        // mask.onmousedown = function (event) {
+        //     var e = event || window.event;
 
 
-                x_size.innerHTML = Math.abs(module_x * proMove / 100) + "mm x";
-                y_size.innerHTML = Math.abs(module_y * proMove / 100) + "mm x";
-                z_size.innerHTML = Math.abs(module_z * proMove / 100) + "mm";
-                total = Math.abs(module_x * module_y * module_z * proMove / 100);
-                Money = Math.ceil(total * 0.00008);
-                document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-                MONEY = "￥" + Money * Number;
+        //     // 2.1 获取初始位置
+        //     var offsetLeft = e.clientX - mask.offsetLeft;
 
-                return false;
-            }
-        };
+        //     // 2.2 监听鼠标的移动
+        //     document.onmousemove = function (event) {
+        //         var e = event || window.event;
 
+        //         // 2.3 获取移动的位置
+        //         var x = e.clientX - offsetLeft;
 
-        // 2.5 监听鼠标抬起
-        document.onmouseup = function () {
-            document.onmousemove = null;
-        };
+        //         // 边界值处理
+        //         if (x < 0) {
+        //             x = 0;
+        //         } else if (x >= progress.offsetWidth - mask.offsetWidth) {
+        //             x = progress.offsetWidth - mask.offsetWidth;
+        //         }
 
+        //         // 2.4 走起来
 
-/************************jq打印模式的选择*******************************/
-
-
-        var btn_list = $(".pri_type button");
-        for (var i = 0; i < btn_list.length; i++) {
-            (function (i) {
-                $(btn_list[i]).click(function () {
-                    $(btn_list[i]).addClass("selected")
-                        .siblings().removeClass("selected");
-                });
-            })(i);
-        }
+        //         progress_bar.style.width = x + 'px';
+        //         mask.style.left = x + 'px';
+        //         var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
+        //         progress_value.innerHTML = proMove + '%';
 
 
-/************************jq文件上传、队列、下*******************************/
+        //         x_size.innerHTML = Math.abs(module_x * proMove / 100) + "mm x";
+        //         y_size.innerHTML = Math.abs(module_y * proMove / 100) + "mm x";
+        //         z_size.innerHTML = Math.abs(module_z * proMove / 100) + "mm";
+        //         total = Math.abs(module_x * module_y * module_z * proMove / 100);
+        //         Money = Math.ceil(total * 0.00008);
+        //         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
+        //         MONEY = "￥" + Money * Number;
 
-        var btnList = $(".operation button");
-
-        btnList.eq(0).click(function () {
-            //js对象->jq对象
-            $("#fileField").click();
-        });
-
-        /************************jq结算跳转*******************************/
-
-        $(".sumAll").click(function () {
-            // alert("ok")
-        });
+        //         return false;
+        //     }
+        // };
 
 
-        //得到确定上传文件的按钮
-        var $sumMoney = $(".sumMoney");
-        var btn = $(".op_btn2");
-
-        var arr = [];
-        var queue = [];
-        var num = 0;
-        //测试是否得到输入框的文件
-        btn.click(function () {
-
-            fi = test;
-
-            //缓存文件在数组
-            arr.push(fi);
-
-            //文件的大小
-            file_size = SIZE;
+        // // 2.5 监听鼠标抬起
+        // document.onmouseup = function () {
+        //     document.onmousemove = null;
+        // };
 
 
-            var $queue = createQueue(arr[num]);
-            $(".tb_queue").append($queue);
-            num += 1;
-
-            numMoney.push(Money * Number);
-
-            allMoney += Money * Number;
-            $sumMoney.text("￥" + allMoney);
-            Number = 1;
-            document.getElementsByClassName("num")[0].innerHTML = Number;
+        // /************************jq打印模式的选择*******************************/
 
 
-        });
+        // var btn_list = $(".pri_type button");
+        // for (var i = 0; i < btn_list.length; i++) {
+        //     (function (i) {
+        //         $(btn_list[i]).click(function () {
+        //             $(btn_list[i]).addClass("selected")
+        //                 .siblings().removeClass("selected");
+        //         });
+        //     })(i);
+        // }
 
 
-        function createQueue(arr) {
-            var $queue = $(" <tr><td>" + arr +
-                "</td><td>" + new Date().getTime() + "</td><td>" + total + " mm³</td><td>" + Number + "</td><td>" + MONEY + "</td><td>\n" +
-                "<button class=\"btn btn-danger dancel\">取消</button>\n" +
-                "</td>\n" +
-                "</tr>");
-            // queue.push(obj);
-            return $queue;
-        }
+        // /************************jq文件上传、队列、下*******************************/
 
-        var allMoney = 0;
-        var numMoney = [];
+        // var btnList = $(".operation button");
 
+        // btnList.eq(0).click(function () {
+        //     //js对象->jq对象
+        //     $("#fileField").click();
+        // });
 
-        $("body").delegate(".sum", "click", function () {
-            console.log($(this).index());;
-        });
+        // /************************jq结算跳转*******************************/
 
-        $("body").delegate(".dancel", "click", function () {
-            allMoney -= numMoney[$(this).parents("tr").index() - 1];
-            var arr = numMoney[$(this).parents("tr").index() - 1];
+        // $(".sumAll").click(function () {
+        //     // alert("ok")
+        // });
 
 
-            numMoney.splice($.inArray(arr, numMoney), 1);
+        // //得到确定上传文件的按钮
+        // var $sumMoney = $(".sumMoney");
+        // var btn = $(".op_btn2");
 
-            $sumMoney.text("￥" + allMoney);
+        // var arr = [];
+        // var queue = [];
+        // var num = 0;
+        // //测试是否得到输入框的文件
+        // btn.click(function () {
 
-            if (String(allMoney) == "NaN") {
-                $sumMoney.text("￥ 0");
-            }
-            $(this).parents("tr").remove();
+        //     fi = test;
 
-        });
+        //     //缓存文件在数组
+        //     arr.push(fi);
+
+        //     //文件的大小
+        //     file_size = SIZE;
+
+
+        //     var $queue = createQueue(arr[num]);
+        //     $(".tb_queue").append($queue);
+        //     num += 1;
+
+        //     numMoney.push(Money * Number);
+
+        //     allMoney += Money * Number;
+        //     $sumMoney.text("￥" + allMoney);
+        //     Number = 1;
+        //     document.getElementsByClassName("num")[0].innerHTML = Number;
+
+
+        // });
+
+
+        // function createQueue(arr) {
+        //     var $queue = $(" <tr><td>" + arr +
+        //         "</td><td>" + new Date().getTime() + "</td><td>" + total + " mm³</td><td>" + Number + "</td><td>" + MONEY + "</td><td>\n" +
+        //         "<button class=\"btn btn-danger dancel\">取消</button>\n" +
+        //         "</td>\n" +
+        //         "</tr>");
+        //     // queue.push(obj);
+        //     return $queue;
+        // }
+
+        // var allMoney = 0;
+        // var numMoney = [];
+
+
+        // $("body").delegate(".sum", "click", function () {
+        //     console.log($(this).index());;
+        // });
+
+        // $("body").delegate(".dancel", "click", function () {
+        //     allMoney -= numMoney[$(this).parents("tr").index() - 1];
+        //     var arr = numMoney[$(this).parents("tr").index() - 1];
+
+
+        //     numMoney.splice($.inArray(arr, numMoney), 1);
+
+        //     $sumMoney.text("￥" + allMoney);
+
+        //     if (String(allMoney) == "NaN") {
+        //         $sumMoney.text("￥ 0");
+        //     }
+        //     $(this).parents("tr").remove();
+
+        // });
 
 
 

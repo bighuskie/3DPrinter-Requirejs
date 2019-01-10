@@ -1,11 +1,15 @@
-(function(){
+(function () {
     requirejs.config({
-        baseUrl:"",
-        path:{
+        baseUrl: "./assets/js/",
+        paths: {
+            loadStl: 'loadStl',
+            handleStl: 'handleStl',
+            jquery: 'libs/Jquery/jquery-1.12.4'
 
         }
     });
-    requirejs([],function(){
-        
+    requirejs(['handleStl'], function (handleStl) {
+        threeStart = handleStl.threeStart;
+        window.onload = threeStart();
     });
 })()
