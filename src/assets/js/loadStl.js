@@ -6,32 +6,8 @@ define(function (window) {
     var Height = document.getElementById("canvas3d").clientHeight;
 
 
-    //购物车业务
-    var test;
-    var fileSize;
-    var total;
-    var Number = 1;
-    var MONEY;
-    var dowm = $(".down");
-    var add = $(".add");
 
-    dowm.click(function () {
-        if (Number == 1) {
-            Number = 1
-        } else {
-            Number -= 1;
-            document.getElementsByClassName("num")[0].innerHTML = Number;
-            document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-            MONEY = "￥" + Money * Number;
-        }
-    });
-    add.click(function () {
-        Number += 1;
-        document.getElementsByClassName("num")[0].innerHTML = Number;
-        document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-        MONEY = "￥" + Money * Number;
-
-    });
+   
 
     var stlFile;
     //读取文件信息的函数,刷新视图
@@ -79,6 +55,7 @@ define(function (window) {
     }
 
 
+
     //模型大小比例1:1
     var model_x = model_y = model_z = 1;
     //模型大小参数
@@ -114,7 +91,7 @@ define(function (window) {
             module_x = (boundbox.max.x - boundbox.min.x).toFixed(0);
             module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
             module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
-            showModuleMessage(module_x, module_y, module_z, 0.00008)
+            showModuleMessage(module_x, module_y, module_z, 0.00008);
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);
