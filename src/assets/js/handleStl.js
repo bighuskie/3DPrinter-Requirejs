@@ -2,64 +2,73 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     /**
      * 1、上传文件逻辑处理
      */
-    //sessionStorage变量->文件名
-    var Storage = sessionStorage.getItem("data");
-    var filename = sessionStorage.getItem("fileName");
+    //隐藏的真正上传按钮
+    var input_hidden = document.getElementById("fileField");
+    var uploadWrapper = document.getElementsByClassName("upload-wrapper")[0];
+    //点击类似蒙版打印文件界面的上传按钮触发上传文件按钮，同时改变相关样式
+    $('.btn-upload').on('click', function () {
+        $(input_hidden).click();
+    });
 
-    //全局变量->文件名(读取文件用)
-    var fileName;
-    window.fileName = fileName;
     //全局变量->文件名(读取文件名)
     var f_name;
     window.f_name = f_name;
 
-    //判断是否有本地缓存（5M以下）
-    if (isNaN(Storage)) {
-        fileName = Storage;
-        f_name = filename;
-        //删除缓存
-        sessionStorage.setItem("data", null);
-        sessionStorage.setItem("filename", null);
-    }
 
-    var INPUT = document.getElementById("fileField");
-    var file_name = document.getElementsByClassName("fileName")[0];
+    var showFileName = document.getElementsByClassName("fileName")[0];
     //文件名处理
-    if (!fileName) {
+    if (!loadStl.fileName) {
         // fileName = 'static/module/bike_frame.stl'
     } else {
 
     }
-    INPUT.onchange = function () {
+    input_hidden.onchange = function () {
         //获取文件路径
-        var path = INPUT.value;
+        var path = input_hidden.value;
         // 截取文件名后缀
         var file = path.substr(path.lastIndexOf("."));
         test = this.files[0].name;
         SIZE = this.files[0].size;
-        file_name.innerHTML = this.files[0].name || f_name;
+        showFileName.innerHTML = this.files[0].name || f_name;
         //根据文件名后缀决定操作
         if (file !== ".stl") {
-            INPUT.value = "";
+            input_hidden.value = "";
             return;
         } else {
-            loadStl.readURL(INPUT);
+            loadStl.readURL(input_hidden);
+            uploadWrapper.style.display = "none";
+            document.body.style.overflow = "auto";
+            
         }
+        var moduleSize=loadStl.getModuleSize();
+        console.log(moduleSize);
     };
+
+     //模型x、y、z的尺寸
+     var moduleSize=loadStl.getModuleSize();
+     //模型大小的显示span,显示模型大小变化
+     var x_size = document.getElementsByClassName("x_size")[0];
+     var y_size = document.getElementsByClassName("y_size")[0];
+     var z_size = document.getElementsByClassName("z_size")[0];
+
+
+     if (moduleSize.moduleX || moduleSize.moduleX == 0) {
+         x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
+         y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
+         z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
+         total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
+         Money = Math.ceil(total * 0.00008);
+         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
+         MONEY = "￥" + Money * Number;
+     } else {
+         return;
+     }
+
 
     /**
      * 2、购物车显示与处理
      */
 
-    // //监听窗口变化，重新加载页面
-    // var timer = null;
-    // window.onresize = function () {
-    //     clearInterval(timer);
-    //     //进行节流
-    //     timer = setTimeout(function () {
-    //         location.reload()
-    //     }, 200);
-    // };
 
     /************************js进度条***************************/
 
@@ -92,32 +101,12 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
             progress_value.innerHTML = proMove + '%';
 
-            //模型大小的显示span,显示模型大小变化
-            var x_size = document.getElementsByClassName("x_size")[0];
-            var y_size = document.getElementsByClassName("y_size")[0];
-            var z_size = document.getElementsByClassName("z_size")[0];
-
-           
-            if (loadStl.module_x || loadStl.module_x == 0) {
-                
-                x_size.innerHTML = Math.abs(loadStl.module_x) + "mm x";
-                y_size.innerHTML = Math.abs(loadStl.module_y) + "mm x";
-                z_size.innerHTML = Math.abs(loadStl.module_z) + "mm";
-                total = Math.abs(loadStl.module_x * loadStl.module_y * loadStl.module_z);
-                Money = Math.ceil(total * 0.00008);
-                document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-                MONEY = "￥" + Money * Number;
-                console.log(loadStl.module_x);
-            } else {
-                console.log(loadStl.module_x+'222');
-                return;
-            }
+            var moduleSize=loadStl.getModuleSize();
+            console.log(moduleSize)
 
             return false;
         }
     };
-
-
     // 2.5 监听鼠标抬起
     document.onmouseup = function () {
         document.onmousemove = null;
@@ -125,7 +114,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
 
 
 
-    /************************jq打印模式的选择*******************************/
+/************************jq打印模式的选择*******************************/
 
 
     var btn_list = $(".pri_type button");

@@ -10,9 +10,7 @@ define(function (window) {
 
 
 
-    // window.x_size=x_size;
-    // window.y_size=y_size;
-    // window.z_size=z_size;
+
 
     //上传预览按钮
     // var INPUT = document.getElementById("fileField");
@@ -45,13 +43,14 @@ define(function (window) {
 
     });
 
+    var stlFile;
     //读取文件信息的函数,刷新视图
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
                 //得到文件名(base64编码)
-                fileName = e.target.result;
+                stlFile = e.target.result;
                 divCanvas.removeChild(renderer.domElement);
                 threeStart();
             };
@@ -83,7 +82,7 @@ define(function (window) {
     var model_x = model_y = model_z = 1;
     //模型大小参数
     var module_x = 0;
-    var module_y = 0;
+    var module_y = 0; 
     var module_z = 0;
     //加载模型初始化函数
     function init() {
@@ -97,7 +96,7 @@ define(function (window) {
 
         // 实例stlloader
         var loader = new THREE.STLLoader();
-        loader.load(fileName, function (geometry) {
+        loader.load(stlFile, function (geometry) {
             //材料颜色
             var material = new THREE.MeshPhongMaterial({ color: 0x008080, specular: 0xC0C0C0, shininess: 200 });
             var mesh = new THREE.Mesh(geometry, material);
@@ -114,7 +113,7 @@ define(function (window) {
             module_x = (boundbox.max.x - boundbox.min.x).toFixed(0);
             module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
             module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
-
+            console.log(module_x);
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);
@@ -206,5 +205,14 @@ define(function (window) {
         init();
         animate();
     }
-    return { threeStart, readURL, module_x, module_y, module_z };
+
+    //获取模型x、y、z的尺寸函数
+    function getModuleSize() {
+        return {
+            moduleX: module_x,
+            moduleY: module_y,
+            moduleZ: module_z
+        }
+    }
+    return { threeStart, readURL, getModuleSize };
 });

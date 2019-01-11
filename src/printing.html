@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
     <link type="image/x-icon" rel="shortcut icon" href="assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/Less/cloud_printer.css">
-    <!-- <link rel="stylesheet" href="assets/Less/upload.css"> -->
 </head>
 
 <body style="overflow:hidden">
@@ -111,7 +109,7 @@
                         <span>打印模式:</span>&nbsp;
                         <div class="pri_type">
                             <div class="btn-group " role="group" aria-label="...">
-                                <button type="button" class="btn btn-default">快速</button>
+                                <button type="button" class="btn btn-default selected">快速</button>
                                 <button type="button" class="btn btn-default">标准</button>
                                 <button type="button" class="btn btn-default">品质</button>
                                 <button type="button" class="btn btn-default">自定义</button>
@@ -197,7 +195,7 @@
     </div>
 
     <!-- 类似蒙版打印文件界面 -->
-    <div class="container-fluid">
+    <div class="container-fluid upload-wrapper">
         <div id="upload-wrapper">
             <div class="img-wrapper"></div>
             <div class="upload">
