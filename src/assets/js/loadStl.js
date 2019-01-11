@@ -4,44 +4,8 @@ define(function (window) {
     //预览图的宽高
     var Width = document.getElementById("canvas3d").clientWidth;
     var Height = document.getElementById("canvas3d").clientHeight;
-    //待定参数
-    var Input = document.getElementById("input");
-    var btn = document.getElementById("btn");
-
-
-
-
-
-    //上传预览按钮
-    // var INPUT = document.getElementById("fileField");
-    // var file_name = document.getElementsByClassName("fileName")[0];
-
-    //购物车业务
-    var test;
-    var SIZE;
-    var total;
-    var Number = 1;
-    var MONEY;
-    var dowm = $(".down");
-    var add = $(".add");
-
-    dowm.click(function () {
-        if (Number == 1) {
-            Number = 1
-        } else {
-            Number -= 1;
-            document.getElementsByClassName("num")[0].innerHTML = Number;
-            document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-            MONEY = "￥" + Money * Number;
-        }
-    });
-    add.click(function () {
-        Number += 1;
-        document.getElementsByClassName("num")[0].innerHTML = Number;
-        document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-        MONEY = "￥" + Money * Number;
-
-    });
+   
+   
 
     var stlFile;
     //读取文件信息的函数,刷新视图
@@ -75,7 +39,6 @@ define(function (window) {
     var upVectorZ = 0;
     var cameralScale = 0.5;
 
-    var Money = 0;
 
 
     //模型大小比例1:1
@@ -113,7 +76,6 @@ define(function (window) {
             module_x = (boundbox.max.x - boundbox.min.x).toFixed(0);
             module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
             module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
-            console.log(module_x);
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);

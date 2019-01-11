@@ -38,36 +38,69 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             loadStl.readURL(input_hidden);
             uploadWrapper.style.display = "none";
             document.body.style.overflow = "auto";
-            
         }
-        var moduleSize=loadStl.getModuleSize();
-        console.log(moduleSize);
     };
 
-     //模型x、y、z的尺寸
-     var moduleSize=loadStl.getModuleSize();
-     //模型大小的显示span,显示模型大小变化
-     var x_size = document.getElementsByClassName("x_size")[0];
-     var y_size = document.getElementsByClassName("y_size")[0];
-     var z_size = document.getElementsByClassName("z_size")[0];
+    //模型x、y、z的尺寸
+    var moduleSize = loadStl.getModuleSize();
+    //模型大小的显示span,显示模型大小变化
+    var x_size = document.getElementsByClassName("x_size")[0];
+    var y_size = document.getElementsByClassName("y_size")[0];
+    var z_size = document.getElementsByClassName("z_size")[0];
 
 
-     if (moduleSize.moduleX || moduleSize.moduleX == 0) {
-         x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
-         y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
-         z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
-         total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
-         Money = Math.ceil(total * 0.00008);
-         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-         MONEY = "￥" + Money * Number;
-     } else {
-         return;
-     }
+    if (moduleSize.moduleX || moduleSize.moduleX == 0) {
+        x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
+        y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
+        z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
+        total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
+        modulePrice = Math.ceil(total * 0.00008);
+        document.getElementsByClassName("money")[0].innerHTML = "￥" + modulePrice * moduleNumber;
+        MONEY = "￥" + modulePrice * moduleNumber;
+    } else {
+        return;
+    }
 
 
     /**
      * 2、购物车显示与处理
      */
+    var moduleNumber = 0;
+    var modulePrice;
+    var printerModel;
+    //每个模型总金额
+    var totalMoney;
+    //所有模型总金额
+    var sumMoney;
+
+    //购物车业务
+    var test;
+    var total;
+    var MONEY;
+
+    //显示模型数量和显示每个模型总金额的区域
+    var moduleNumberInner = $(".num");
+    var totalMoneyInner = $(".money");
+
+    $(".down").on("click", function () {
+        if (moduleNumber == 1) {
+            moduleNumber = 1;
+            moduleNumberInner.text(moduleNumber);
+            totalMoneyInner.text("￥" + modulePrice);
+        } else {
+            moduleNumber -= 1;
+            moduleNumberInner.text(moduleNumber);
+            totalMoney = modulePrice * moduleNumber;
+            totalMoneyInner.text("￥" + totalMoney);
+        }
+    });
+    $(".add").on("click", function () {
+        moduleNumber += 1;
+        moduleNumberInner.text(moduleNumber);
+        totalMoney = modulePrice * moduleNumber;
+        totalMoneyInner.text("￥" + totalMoney);
+    });
+
 
 
     /************************js进度条***************************/
@@ -101,7 +134,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
             progress_value.innerHTML = proMove + '%';
 
-            var moduleSize=loadStl.getModuleSize();
+            var moduleSize = loadStl.getModuleSize();
             console.log(moduleSize)
 
             return false;
@@ -114,7 +147,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
 
 
 
-/************************jq打印模式的选择*******************************/
+    /************************jq打印模式的选择*******************************/
 
 
     var btn_list = $(".pri_type button");
@@ -131,9 +164,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     /************************jq文件上传、队列、下*******************************/
 
     var btnList = $(".operation button");
-
     btnList.eq(0).click(function () {
-        //js对象->jq对象
         $("#fileField").click();
     });
 
@@ -163,18 +194,18 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
         $(".tb_queue").append($queue);
         num += 1;
 
-        numMoney.push(Money * Number);
+        numMoney.push(modulePrice * moduleNumber);
 
-        allMoney += Money * Number;
+        allMoney += modulePrice * moduleNumber;
         $sumMoney.text("￥" + allMoney);
-        Number = 1;
-        document.getElementsByClassName("num")[0].innerHTML = Number;
+        moduleNumber = 1;
+        document.getElementsByClassName("num")[0].innerHTML = moduleNumber;
     });
 
 
     function createQueue(arr) {
         var $queue = $(" <tr><td>" + arr +
-            "</td><td>" + new Date().getTime() + "</td><td>" + total + " mm³</td><td>" + Number + "</td><td>" + MONEY + "</td><td>\n" +
+            "</td><td>" + new Date().getTime() + "</td><td>" + total + " mm³</td><td>" + moduleNumber + "</td><td>" + MONEY + "</td><td>\n" +
             "<button class=\"btn btn-danger dancel\">取消</button>\n" +
             "</td>\n" +
             "</tr>");
