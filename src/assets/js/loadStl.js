@@ -4,21 +4,11 @@ define(function (window) {
     //预览图的宽高
     var Width = document.getElementById("canvas3d").clientWidth;
     var Height = document.getElementById("canvas3d").clientHeight;
-    //待定参数
-    var Input = document.getElementById("input");
-    var btn = document.getElementById("btn");
 
-
-
-
-
-    //上传预览按钮
-    // var INPUT = document.getElementById("fileField");
-    // var file_name = document.getElementsByClassName("fileName")[0];
 
     //购物车业务
     var test;
-    var SIZE;
+    var fileSize;
     var total;
     var Number = 1;
     var MONEY;
@@ -75,14 +65,25 @@ define(function (window) {
     var upVectorZ = 0;
     var cameralScale = 0.5;
 
-    var Money = 0;
+    //展示模型尺寸以及金额等
+    function showModuleMessage(module_x, module_y, module_z, price) {
+        var x_size = document.getElementsByClassName("x_size")[0];
+        var y_size = document.getElementsByClassName("y_size")[0];
+        var z_size = document.getElementsByClassName("z_size")[0];
+        x_size.innerHTML = Math.abs(module_x) + "mm x";
+        y_size.innerHTML = Math.abs(module_y) + "mm x";
+        z_size.innerHTML = Math.abs(module_z) + "mm";
+        var moduleVolume = Math.abs(module_y * module_y * module_z);
+        var Money = Math.ceil(moduleVolume * price);
+        document.getElementsByClassName("money")[0].innerHTML = "￥" + Money;
+    }
 
 
     //模型大小比例1:1
     var model_x = model_y = model_z = 1;
     //模型大小参数
     var module_x = 0;
-    var module_y = 0; 
+    var module_y = 0;
     var module_z = 0;
     //加载模型初始化函数
     function init() {
@@ -113,7 +114,7 @@ define(function (window) {
             module_x = (boundbox.max.x - boundbox.min.x).toFixed(0);
             module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
             module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
-            console.log(module_x);
+            showModuleMessage(module_x, module_y, module_z, 0.00008)
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);

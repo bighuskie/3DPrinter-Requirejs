@@ -10,11 +10,6 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
         $(input_hidden).click();
     });
 
-    //全局变量->文件名(读取文件名)
-    var f_name;
-    window.f_name = f_name;
-
-
     var showFileName = document.getElementsByClassName("fileName")[0];
     //文件名处理
     if (!loadStl.fileName) {
@@ -28,7 +23,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
         // 截取文件名后缀
         var file = path.substr(path.lastIndexOf("."));
         test = this.files[0].name;
-        SIZE = this.files[0].size;
+        fileSize = this.files[0].size;
         showFileName.innerHTML = this.files[0].name || f_name;
         //根据文件名后缀决定操作
         if (file !== ".stl") {
@@ -38,37 +33,33 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             loadStl.readURL(input_hidden);
             uploadWrapper.style.display = "none";
             document.body.style.overflow = "auto";
-            
         }
-        var moduleSize=loadStl.getModuleSize();
-        console.log(moduleSize);
     };
 
-     //模型x、y、z的尺寸
-     var moduleSize=loadStl.getModuleSize();
-     //模型大小的显示span,显示模型大小变化
-     var x_size = document.getElementsByClassName("x_size")[0];
-     var y_size = document.getElementsByClassName("y_size")[0];
-     var z_size = document.getElementsByClassName("z_size")[0];
 
-
-     if (moduleSize.moduleX || moduleSize.moduleX == 0) {
-         x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
-         y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
-         z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
-         total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
-         Money = Math.ceil(total * 0.00008);
-         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-         MONEY = "￥" + Money * Number;
-     } else {
-         return;
-     }
+    //模型x、y、z的尺寸
+    var moduleSize = loadStl.getModuleSize();
+    //模型大小的显示span,显示模型大小变化
+    var x_size = document.getElementsByClassName("x_size")[0];
+    var y_size = document.getElementsByClassName("y_size")[0];
+    var z_size = document.getElementsByClassName("z_size")[0];
+    if (moduleSize.moduleX || moduleSize.moduleX == 0) {
+        x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
+        y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
+        z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
+        total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
+        Money = Math.ceil(total * 0.00008);
+        document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
+        MONEY = "￥" + Money * Number;
+    } else {
+        return;
+    }
 
 
     /**
      * 2、购物车显示与处理
      */
-
+    
 
     /************************js进度条***************************/
 
@@ -101,7 +92,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
             progress_value.innerHTML = proMove + '%';
 
-            var moduleSize=loadStl.getModuleSize();
+            var moduleSize = loadStl.getModuleSize();
             console.log(moduleSize)
 
             return false;
@@ -114,7 +105,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
 
 
 
-/************************jq打印模式的选择*******************************/
+    /************************jq打印模式的选择*******************************/
 
 
     var btn_list = $(".pri_type button");
@@ -157,7 +148,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
         //缓存文件在数组
         arr.push(fi);
         //文件的大小
-        file_size = SIZE;
+        file_size = fileSize;
 
         var $queue = createQueue(arr[num]);
         $(".tb_queue").append($queue);
