@@ -1,3 +1,6 @@
+body{
+  height: 100%;
+  overflow: hidden;
 // 导航样式
 .c_navbar{
   background-color: #464646;
@@ -47,7 +50,9 @@
     }
   }
 }
-// 模型预览及设置样式
+#container{
+  width: 100%;
+  // 模型预览及设置样式
 #prev{
   padding: 0 40px;
   margin-bottom: 20px;
@@ -154,7 +159,7 @@
         }
         .pro_control{
           position: absolute;
-          left: 0;
+          right: 45px;
           top: -6px;
           height: 15px;
           width: 15px;
@@ -245,6 +250,7 @@
     }
   }
 }
+}
 //类似蒙版打印文件界面样式
 #upload-wrapper{
   width: 100%;
@@ -295,7 +301,8 @@
 
 
 // 底部信息样式
-.footer {
+#footer {
+  // display: none;
    background:  #808080a1;
       div {
             div {
@@ -318,4 +325,5 @@
   text-align: center;
   line-height: 25px;
   vertical-align: middle;
+}
 }

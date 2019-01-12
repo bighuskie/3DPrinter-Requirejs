@@ -8,8 +8,7 @@
 
         }
     });
-    requirejs(['handleStl'], function (handleStl) {
-        threeStart = handleStl.threeStart;
-        window.onload = threeStart();
+    requirejs(['loadStl','handleStl'], function (loadStl) {
+        document.body.onload = loadStl.threeStart();        
     });
 })()

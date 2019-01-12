@@ -1,116 +1,123 @@
-.c_navbar {
+body {
+  height: 100%;
+  overflow: hidden;
+}
+body .c_navbar {
   background-color: #464646;
   border-color: #e7e7e700;
   margin-bottom: 0;
 }
-.c_navbar .c_cot {
+body .c_navbar .c_cot {
   width: 90%;
 }
-.c_navbar .c_cot .c_header {
+body .c_navbar .c_cot .c_header {
   display: inline-block;
   width: 19%;
   height: 75px;
 }
-.c_navbar .c_cot .nav_menu_li {
+body .c_navbar .c_cot .nav_menu_li {
   margin-right: 1vh;
 }
-.c_navbar .c_cot .nav_menu_li .nav_menu_font {
+body .c_navbar .c_cot .nav_menu_li .nav_menu_font {
   line-height: 44px;
   font-size: 1.5em;
   color: #fff;
 }
-.c_navbar .c_cot .btn_login {
+body .c_navbar .c_cot .btn_login {
   border: 3px solid #fff;
   border-radius: 18px;
   margin-top: 21px;
   width: 74px;
   height: 36px;
 }
-.c_navbar .c_cot .btn_login a {
+body .c_navbar .c_cot .btn_login a {
   color: #fff;
   line-height: 0;
   font-size: 1.3em;
 }
-.c_navbar .c_cot .btn_login a .img-circle {
+body .c_navbar .c_cot .btn_login a .img-circle {
   width: 45px;
   height: 45px;
   display: inline-block;
 }
-.c_navbar .c_cot .btn_login a span {
+body .c_navbar .c_cot .btn_login a span {
   display: inline-block;
 }
-.c_navbar .c_cot .login_img {
+body .c_navbar .c_cot .login_img {
   margin-top: 0;
   border: none;
   border-radius: 0;
   width: auto;
 }
-#prev {
+body #container {
+  width: 100%;
+}
+body #container #prev {
   padding: 0 40px;
   margin-bottom: 20px;
   height: 100%;
 }
-#prev .prev_left {
+body #container #prev .prev_left {
   margin-top: 40px;
   background-color: #fafafa;
   height: 620px;
   margin-bottom: 40px;
 }
-#prev .prev_left #canvas3d {
+body #container #prev .prev_left #canvas3d {
   width: 100%;
   height: 100%;
 }
-#prev .prev_left #uploadForm {
+body #container #prev .prev_left #uploadForm {
   display: none;
 }
-#prev .prev_right {
+body #container #prev .prev_right {
   margin-top: 40px;
 }
-#prev .prev_right li {
+body #container #prev .prev_right li {
   list-style: none;
   background-color: #fff;
   font-size: 20px;
   line-height: 50px;
 }
-#prev .prev_right li img {
+body #container #prev .prev_right li img {
   display: inline-block;
   width: 45px;
   height: 45px;
 }
-#prev .prev_right li .file_png,
-#prev .prev_right li .size_png {
+body #container #prev .prev_right li .file_png,
+body #container #prev .prev_right li .size_png {
   width: 35px;
   height: 35px;
   margin-left: 6px;
   margin-right: 4px;
 }
-#prev .prev_right li .resize_png,
-#prev .prev_right li .pla_png,
-#prev .prev_right li .number_png,
-#prev .prev_right li .time_png,
-#prev .prev_right li .price_png {
+body #container #prev .prev_right li .resize_png,
+body #container #prev .prev_right li .pla_png,
+body #container #prev .prev_right li .number_png,
+body #container #prev .prev_right li .time_png,
+body #container #prev .prev_right li .price_png {
   width: 30px;
   height: 30px;
   margin-left: 9px;
   margin-right: 5px;
 }
-#prev .prev_right li .type_png {
+body #container #prev .prev_right li .type_png {
   width: 39px;
   height: 39px;
   margin-left: 5px;
 }
-#prev .prev_right li span {
+body #container #prev .prev_right li span {
   display: inline-block;
   vertical-align: middle;
 }
-#prev .prev_right li .select {
+body #container #prev .prev_right li .select {
   display: inline-block;
   height: 29px;
   width: 80px;
   vertical-align: middle;
   position: relative;
 }
-#prev .prev_right li .select:after {
+body #container #prev .prev_right li .select:after {
   content: "";
   width: 14px;
   height: 18px;
@@ -121,7 +128,7 @@
   top: 6px;
   z-index: 99;
 }
-#prev .prev_right li select {
+body #container #prev .prev_right li select {
   width: 100%;
   padding: 0 9px;
   vertical-align: top;
@@ -133,18 +140,18 @@
   -moz-appearance: none;
   line-height: 29px;
 }
-#prev .prev_right li .price {
+body #container #prev .prev_right li .price {
   font-size: 16px;
   margin-left: 10px;
 }
-#prev .prev_right li .pro_bar {
+body #container #prev .prev_right li .pro_bar {
   width: 350px;
   height: 3px;
   line-height: 25px;
   position: relative;
   margin: 10px 0 10px 53px;
 }
-#prev .prev_right li .pro_bar .progress {
+body #container #prev .prev_right li .pro_bar .progress {
   width: 300px;
   height: 100%;
   position: relative;
@@ -152,98 +159,98 @@
   top: 0;
   background-color: #bccbbf;
 }
-#prev .prev_right li .pro_bar .progress .progress-bar {
+body #container #prev .prev_right li .pro_bar .progress .progress-bar {
   width: 0;
   height: 100%;
   background-color: #1ac272;
 }
-#prev .prev_right li .pro_bar .pro_control {
+body #container #prev .prev_right li .pro_bar .pro_control {
   position: absolute;
-  left: 0;
+  right: 45px;
   top: -6px;
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: #1ac272;
 }
-#prev .prev_right li .pro_bar #progress_value {
+body #container #prev .prev_right li .pro_bar #progress_value {
   position: absolute;
   right: 0;
   top: -11px;
 }
-#prev .prev_right li .pri_type {
+body #container #prev .prev_right li .pri_type {
   line-height: 25px;
   margin-left: 50px;
 }
-#prev .prev_right li .pri_type button {
+body #container #prev .prev_right li .pri_type button {
   line-height: 11px;
   width: 80px;
   text-align: center;
 }
-#prev .prev_right li .pri_type button:hover {
+body #container #prev .prev_right li .pri_type button:hover {
   background-color: #1ac272;
   color: #fff;
 }
-#prev .prev_right li .pri_type .selected {
+body #container #prev .prev_right li .pri_type .selected {
   background-color: #1ac272;
   color: #fff;
 }
-#prev .prev_right li .number span {
+body #container #prev .prev_right li .number span {
   width: 30px;
   background: #1ac272;
   text-align: center;
   line-height: 25px;
   vertical-align: middle;
 }
-#prev .prev_right li .number span:nth-child(1) {
+body #container #prev .prev_right li .number span:nth-child(1) {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   cursor: pointer;
   color: #fff;
 }
-#prev .prev_right li .number span:nth-child(2) {
+body #container #prev .prev_right li .number span:nth-child(2) {
   border-radius: 0;
   width: 50px;
   background-color: #fafafa;
 }
-#prev .prev_right li .number span:nth-child(3) {
+body #container #prev .prev_right li .number span:nth-child(3) {
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
   cursor: pointer;
   color: #fff;
 }
-#prev .prev_right li .money {
+body #container #prev .prev_right li .money {
   font-size: 30px;
   color: #1ac272;
 }
-#prev .prev_right li .op_btn {
+body #container #prev .prev_right li .op_btn {
   background-color: #1ac272;
   margin-right: 20px;
   border-radius: 5px;
   font-size: 12px;
 }
-#prev .prev_right li .op_btn:hover {
+body #container #prev .prev_right li .op_btn:hover {
   border-color: #1ac272;
 }
-#shopCar-wrapper {
+body #container #shopCar-wrapper {
   width: 100%;
   padding: 0 20px;
 }
-#shopCar-wrapper .shopping .text-right {
+body #container #shopCar-wrapper .shopping .text-right {
   height: 50px;
   line-height: 50px;
 }
-#shopCar-wrapper .shopping .text-right .sumMoney {
+body #container #shopCar-wrapper .shopping .text-right .sumMoney {
   margin-right: 10px;
   line-height: 50px;
   font-size: 20px;
 }
-#shopCar-wrapper .shopping .text-right .sumAll {
+body #container #shopCar-wrapper .shopping .text-right .sumAll {
   width: 60px;
   height: 35px;
   margin-bottom: 8px;
 }
-#upload-wrapper {
+body #upload-wrapper {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -252,13 +259,13 @@
   bottom: 0;
   z-index: 99;
 }
-#upload-wrapper .img-wrapper {
+body #upload-wrapper .img-wrapper {
   width: 100%;
   height: 100%;
   background-image: url('../images/bg-img.jpg');
   background-size: cover;
 }
-#upload-wrapper .upload {
+body #upload-wrapper .upload {
   width: 250px;
   height: 150px;
   position: absolute;
@@ -268,7 +275,7 @@
   margin-top: -150px;
   z-index: 999;
 }
-#upload-wrapper .upload .btn-upload {
+body #upload-wrapper .upload .btn-upload {
   display: inline-block;
   width: 100%;
   height: 100px;
@@ -281,7 +288,7 @@
   text-decoration: none;
   color: #fff;
 }
-#upload-wrapper .upload .text-wrapper {
+body #upload-wrapper .upload .text-wrapper {
   width: 100%;
   height: 50px;
   line-height: 50px;
@@ -289,16 +296,16 @@
   font-size: 18px;
   letter-spacing: 4px;
 }
-.footer {
+body #footer {
   background: #808080a1;
 }
-.footer div div .f_img {
+body #footer div div .f_img {
   width: 40px;
   display: inline-block;
   margin-right: 25px;
   cursor: pointer;
 }
-.footer div div h3 {
+body #footer div div h3 {
   color: white;
   text-align: center;
 }

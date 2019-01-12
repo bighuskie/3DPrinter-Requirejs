@@ -17,6 +17,8 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     } else {
 
     }
+    //模型x、y、z的尺寸
+    var moduleSize;
     input_hidden.onchange = function () {
         //获取文件路径
         var path = input_hidden.value;
@@ -30,54 +32,39 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             input_hidden.value = "";
             return;
         } else {
-            loadStl.readURL(input_hidden);
             uploadWrapper.style.display = "none";
             document.body.style.overflow = "auto";
+            // document.getElementById("container").style.display = "block";
+            // document.getElementById("footer").style.display = "block";
+            loadStl.readURL(input_hidden);
         }
+        //得到模型尺寸，通过延时使数据同步(之后应该用回调)
+        setTimeout(function () {
+            moduleSize = loadStl.getModuleSize();
+        }, 100)
     };
-
-
-    //模型x、y、z的尺寸
-    var moduleSize = loadStl.getModuleSize();
-    //模型大小的显示span,显示模型大小变化
-    var x_size = document.getElementsByClassName("x_size")[0];
-    var y_size = document.getElementsByClassName("y_size")[0];
-    var z_size = document.getElementsByClassName("z_size")[0];
-
-    if (moduleSize.moduleX || moduleSize.moduleX == 0) {
-        x_size.innerHTML = Math.abs(moduleSize.moduleX) + "mm x";
-        y_size.innerHTML = Math.abs(moduleSize.moduleY) + "mm x";
-        z_size.innerHTML = Math.abs(moduleSize.moduleZ) + "mm";
-        total = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
-        Money = Math.ceil(total * 0.00008);
-        document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-        MONEY = "￥" + Money * Number;
-
-        modulePrice = Math.ceil(total * 0.00008);
-        document.getElementsByClassName("money")[0].innerHTML = "￥" + modulePrice * moduleNumber;
-        MONEY = "￥" + modulePrice * moduleNumber;
-
-    } else {
-        return;
-    }
 
 
     /**
      * 2、购物车显示与处理
+     * 模型单价=模型体积*材料价格*材料比例(...)
+     * 模型总金额=模型数量*模型单价
      */
 
-    var moduleNumber = 0;
-    var modulePrice;
-    var printerModel;
-    //每个模型总金额
-    var totalMoney;
-    //所有模型总金额
-    var sumMoney;
+    var moduleNumber = 1;
+    var modulePrice;//模型单价
+    var printerModel;//打印模式
+    var totalMoney;//每个模型总金额
+    var sumMoney;//所有模型总金额
+    var materialPrice = 0.00008;//材料价格
+    //根据进度改变的模型尺寸,初始为模型大小
+    var pro_moduleX;
+    var pro_moduleY;
+    var pro_moduleZ;
+
+    //模型体积
 
     //购物车业务
-    var test;
-    var total;
-    var MONEY;
 
     //显示模型数量和显示每个模型总金额的区域
     var moduleNumberInner = $(".num");
@@ -86,21 +73,40 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     $(".down").on("click", function () {
         if (moduleNumber == 1) {
             moduleNumber = 1;
-            moduleNumberInner.text(moduleNumber);
-            totalMoneyInner.text("￥" + modulePrice);
         } else {
             moduleNumber -= 1;
-            moduleNumberInner.text(moduleNumber);
-            totalMoney = modulePrice * moduleNumber;
-            totalMoneyInner.text("￥" + totalMoney);
         }
+
+        if (!modulePrice) {
+            var moduleVolume = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
+            modulePrice = Math.ceil(moduleVolume * materialPrice);
+            totalMoney = modulePrice * moduleNumber;
+        } else {
+            totalMoney = modulePrice * moduleNumber;
+        }
+        moduleNumberInner.text(moduleNumber);
+        totalMoneyInner.text("￥" + totalMoney);
     });
     $(".add").on("click", function () {
         moduleNumber += 1;
+        if (!modulePrice) {
+            var moduleVolume = Math.abs(moduleSize.moduleX * moduleSize.moduleY * moduleSize.moduleZ);
+            modulePrice = Math.ceil(moduleVolume * materialPrice);
+            totalMoney = modulePrice * moduleNumber;
+        } else {
+            totalMoney = moduleNumber * modulePrice;
+        }
         moduleNumberInner.text(moduleNumber);
-        totalMoney = modulePrice * moduleNumber;
         totalMoneyInner.text("￥" + totalMoney);
     });
+
+    //根据进度条的改变显示模型金额
+    function showMoney(moduleX, moduleY, moduleZ, materialPrice) {
+        var moduleVolume = Math.abs(moduleX * moduleY * moduleZ);
+        modulePrice = Math.ceil(moduleVolume * materialPrice);
+        totalMoney = modulePrice * moduleNumber;
+        document.getElementsByClassName("money")[0].innerHTML = "￥" + totalMoney;
+    }
 
 
 
@@ -113,7 +119,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     var progress_bar = document.getElementsByClassName("progress-bar")[0];
     var mask = document.getElementsByClassName("pro_control")[0];
     var progress_value = document.getElementById("progress_value");
-
+    var proMove = 100;
     //鼠标按下出发事件对象
     mask.onmousedown = function (event) {
         var e = event || window.event;
@@ -133,11 +139,30 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
             // 2.4 走起来
             progress_bar.style.width = x + 'px';
             mask.style.left = x + 'px';
-            var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
+            proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100)
             progress_value.innerHTML = proMove + '%';
 
-            var moduleSize = loadStl.getModuleSize();
-            console.log(moduleSize)
+            //2.5 显示修改后的尺寸、模型数量和每个模型总金额
+
+            //模型大小的显示span,显示模型大小变化
+            var x_size = document.getElementsByClassName("x_size")[0];
+            var y_size = document.getElementsByClassName("y_size")[0];
+            var z_size = document.getElementsByClassName("z_size")[0];
+            //随滚动条变化的模型x、y、z的尺寸
+            pro_moduleX = Math.floor(moduleSize.moduleX * (proMove / 100));
+            pro_moduleY = Math.floor(moduleSize.moduleY * (proMove / 100));
+            pro_moduleZ = Math.floor(moduleSize.moduleZ * (proMove / 100));
+            if (moduleSize.moduleX) {
+                x_size.innerHTML = Math.abs(pro_moduleX) + "mm x";
+                y_size.innerHTML = Math.abs(pro_moduleY) + "mm x";
+                z_size.innerHTML = Math.abs(pro_moduleZ) + "mm";
+                var moduleVolume = Math.abs(pro_moduleX * pro_moduleY * pro_moduleZ);
+                modulePrice = Math.ceil(moduleVolume * materialPrice);
+                totalMoney = modulePrice * moduleNumber;
+                document.getElementsByClassName("money")[0].innerHTML = "￥" + totalMoney;
+            } else {
+                return;
+            }
 
             return false;
         }

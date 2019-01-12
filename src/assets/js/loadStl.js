@@ -6,9 +6,6 @@ define(function (window) {
     var Height = document.getElementById("canvas3d").clientHeight;
 
 
-
-   
-
     var stlFile;
     //读取文件信息的函数,刷新视图
     function readURL(input) {
@@ -23,8 +20,6 @@ define(function (window) {
             reader.readAsDataURL(input.files[0]);
         }
     }
-
-
 
     //相机的相应参数
     var container;
@@ -52,8 +47,8 @@ define(function (window) {
         var moduleVolume = Math.abs(module_y * module_y * module_z);
         var Money = Math.ceil(moduleVolume * price);
         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money;
+        console.log(Money);
     }
-
 
 
     //模型大小比例1:1
@@ -92,6 +87,7 @@ define(function (window) {
             module_y = (boundbox.max.y - boundbox.min.y).toFixed(0);
             module_z = (boundbox.max.z - boundbox.min.z).toFixed(0);
             showModuleMessage(module_x, module_y, module_z, 0.00008);
+
             //对模型位置进行判断
             if (boundbox.min.y >= 0) {
                 mesh.position.set(0, -boundbox.min.y - 600, 0);
@@ -189,7 +185,7 @@ define(function (window) {
         return {
             moduleX: module_x,
             moduleY: module_y,
-            moduleZ: module_z
+            moduleZ: module_z,
         }
     }
     return { threeStart, readURL, getModuleSize };
