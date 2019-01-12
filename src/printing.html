@@ -136,9 +136,9 @@
                             <span class="money">￥0</span>
                         </li>
                         <li class="text-center operation">
-                            <button class="btn btn-success btn-sm op_btn op_btn1">上传文件</button>
-                            <button class="btn btn-success btn-sm op_btn op_btn2">加入队列</button>
-                            <button class="btn btn-success btn-sm op_btn op_btn3">立即打印</button>
+                            <button class="btn btn-success btn-sm op_btn op_btn1 uploadFile">上传文件</button>
+                            <button class="btn btn-success btn-sm op_btn op_btn2 joinQueue">加入队列</button>
+                            <button class="btn btn-success btn-sm op_btn op_btn3 printing">立即打印</button>
                         </li>
                     </ul>
                 </div>
@@ -198,7 +198,7 @@
     </div>
 
     <!-- 类似蒙版打印文件界面 -->
-    <div class="container-fluid upload-wrapper">
+    <div class="container-fluid upload-wrapper" style="display:none">
         <div id="upload-wrapper">
             <div class="img-wrapper"></div>
             <div class="upload">
@@ -208,202 +208,12 @@
         </div>
     </div>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/libs/threejs/three.js"></script>
     <script src="assets/js/libs/threejs/loaders/STLLoader.js"></script>
     <script src="assets/js/libs/threejs/OrbitControls.js"></script>
     <script src="./assets/js/libs/require.js" data-main="./index.js"></script>
-
-
-    <script>
-
-
-
-        // /**********************j监听窗口变化解决画布不响应的问题*************************/
-
-        // //监听窗口变化，重新加载页面
-        // var timer = null;
-        // window.onresize = function () {
-        //     clearInterval(timer);
-
-        //     //进行节流
-
-        //     timer = setTimeout(function () {
-        //         location.reload()
-        //     }, 200);
-        // };
-
-
-        // /************************js进度条***************************/
-
-
-        // var module_x;
-        // var module_y;
-        // var module_z;
-
-
-        // //得到进度条的所需元素
-        // var pro_bar = document.getElementsByClassName("pro_bar");
-        // var progress = document.getElementsByClassName("progress")[0];
-        // var progress_bar = document.getElementsByClassName("progress-bar")[0];
-        // var mask = document.getElementsByClassName("pro_control")[0];
-        // var progress_value = document.getElementById("progress_value");
-
-
-        // //鼠标按下出发事件对象
-        // mask.onmousedown = function (event) {
-        //     var e = event || window.event;
-
-
-        //     // 2.1 获取初始位置
-        //     var offsetLeft = e.clientX - mask.offsetLeft;
-
-        //     // 2.2 监听鼠标的移动
-        //     document.onmousemove = function (event) {
-        //         var e = event || window.event;
-
-        //         // 2.3 获取移动的位置
-        //         var x = e.clientX - offsetLeft;
-
-        //         // 边界值处理
-        //         if (x < 0) {
-        //             x = 0;
-        //         } else if (x >= progress.offsetWidth - mask.offsetWidth) {
-        //             x = progress.offsetWidth - mask.offsetWidth;
-        //         }
-
-        //         // 2.4 走起来
-
-        //         progress_bar.style.width = x + 'px';
-        //         mask.style.left = x + 'px';
-        //         var proMove = parseInt(x / (progress.offsetWidth - mask.offsetWidth) * 100);
-        //         progress_value.innerHTML = proMove + '%';
-
-
-        //         x_size.innerHTML = Math.abs(module_x * proMove / 100) + "mm x";
-        //         y_size.innerHTML = Math.abs(module_y * proMove / 100) + "mm x";
-        //         z_size.innerHTML = Math.abs(module_z * proMove / 100) + "mm";
-        //         total = Math.abs(module_x * module_y * module_z * proMove / 100);
-        //         Money = Math.ceil(total * 0.00008);
-        //         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money * Number;
-        //         MONEY = "￥" + Money * Number;
-
-        //         return false;
-        //     }
-        // };
-
-
-        // // 2.5 监听鼠标抬起
-        // document.onmouseup = function () {
-        //     document.onmousemove = null;
-        // };
-
-
-        // /************************jq打印模式的选择*******************************/
-
-
-        // var btn_list = $(".pri_type button");
-        // for (var i = 0; i < btn_list.length; i++) {
-        //     (function (i) {
-        //         $(btn_list[i]).click(function () {
-        //             $(btn_list[i]).addClass("selected")
-        //                 .siblings().removeClass("selected");
-        //         });
-        //     })(i);
-        // }
-
-
-        // /************************jq文件上传、队列、下*******************************/
-
-        // var btnList = $(".operation button");
-
-        // btnList.eq(0).click(function () {
-        //     //js对象->jq对象
-        //     $("#fileField").click();
-        // });
-
-        // /************************jq结算跳转*******************************/
-
-        // $(".sumAll").click(function () {
-        //     // alert("ok")
-        // });
-
-
-        // //得到确定上传文件的按钮
-        // var $sumMoney = $(".sumMoney");
-        // var btn = $(".op_btn2");
-
-        // var arr = [];
-        // var queue = [];
-        // var num = 0;
-        // //测试是否得到输入框的文件
-        // btn.click(function () {
-
-        //     fi = test;
-
-        //     //缓存文件在数组
-        //     arr.push(fi);
-
-        //     //文件的大小
-        //     file_size = fileSize;
-
-
-        //     var $queue = createQueue(arr[num]);
-        //     $(".tb_queue").append($queue);
-        //     num += 1;
-
-        //     numMoney.push(Money * Number);
-
-        //     allMoney += Money * Number;
-        //     $sumMoney.text("￥" + allMoney);
-        //     Number = 1;
-        //     document.getElementsByClassName("num")[0].innerHTML = Number;
-
-
-        // });
-
-
-        // function createQueue(arr) {
-        //     var $queue = $(" <tr><td>" + arr +
-        //         "</td><td>" + new Date().getTime() + "</td><td>" + total + " mm³</td><td>" + Number + "</td><td>" + MONEY + "</td><td>\n" +
-        //         "<button class=\"btn btn-danger dancel\">取消</button>\n" +
-        //         "</td>\n" +
-        //         "</tr>");
-        //     // queue.push(obj);
-        //     return $queue;
-        // }
-
-        // var allMoney = 0;
-        // var numMoney = [];
-
-
-        // $("body").delegate(".sum", "click", function () {
-        //     console.log($(this).index());;
-        // });
-
-        // $("body").delegate(".dancel", "click", function () {
-        //     allMoney -= numMoney[$(this).parents("tr").index() - 1];
-        //     var arr = numMoney[$(this).parents("tr").index() - 1];
-
-
-        //     numMoney.splice($.inArray(arr, numMoney), 1);
-
-        //     $sumMoney.text("￥" + allMoney);
-
-        //     if (String(allMoney) == "NaN") {
-        //         $sumMoney.text("￥ 0");
-        //     }
-        //     $(this).parents("tr").remove();
-
-        // });
-
-
-
-
-    </script>
 </body>
 
 </html>

@@ -47,7 +47,6 @@ define(function (window) {
         var moduleVolume = Math.abs(module_y * module_y * module_z);
         var Money = Math.ceil(moduleVolume * price);
         document.getElementsByClassName("money")[0].innerHTML = "￥" + Money;
-        console.log(Money);
     }
 
 
