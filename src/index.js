@@ -1,6 +1,6 @@
 (function () {
     requirejs.config({
-        baseUrl: "./assets/js/",
+        baseUrl: "../assets/js/",
         paths: {
             loadStl: 'loadStl',
             handleStl: 'handleStl',

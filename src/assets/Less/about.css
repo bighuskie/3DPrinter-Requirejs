@@ -1,0 +1,221 @@
+.container-fuild .bg-wrapper {
+  height: 525px;
+  min-width: 1135px;
+}
+.container-fuild .bg-wrapper .img-wrapper {
+  min-width: 1135px;
+  position: relative;
+  top: -75px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-color: #000;
+}
+.container-fuild .bg-wrapper .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+.container-fuild .text-wrapper {
+  width: 100%;
+  height: 200px;
+  margin-top: 255px;
+  background-color: #a9f3d06e;
+}
+.container-fuild .text-wrapper p {
+  width: 625px;
+  height: 200px;
+  margin: 0 auto;
+  padding-top: 30px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 30px;
+}
+.container-fuild .container-wrapper,
+.container-fuild .partner-container,
+.container-fuild .feature-container {
+  padding-bottom: 60px;
+  border-bottom: 1px solid #eee;
+}
+.container-fuild .container-wrapper a,
+.container-fuild .partner-container a,
+.container-fuild .feature-container a {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  padding: 0;
+}
+.container-fuild .container-wrapper .approach-wrapper p,
+.container-fuild .partner-container .approach-wrapper p,
+.container-fuild .feature-container .approach-wrapper p,
+.container-fuild .container-wrapper .partner-wrapper p,
+.container-fuild .partner-container .partner-wrapper p,
+.container-fuild .feature-container .partner-wrapper p,
+.container-fuild .container-wrapper .feature-wrapper p,
+.container-fuild .partner-container .feature-wrapper p,
+.container-fuild .feature-container .feature-wrapper p {
+  margin-top: 15px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 30px;
+  font-weight: bolder;
+}
+.container-fuild .container-wrapper .approach-wrapper .descInfo,
+.container-fuild .partner-container .approach-wrapper .descInfo,
+.container-fuild .feature-container .approach-wrapper .descInfo,
+.container-fuild .container-wrapper .partner-wrapper .descInfo,
+.container-fuild .partner-container .partner-wrapper .descInfo,
+.container-fuild .feature-container .partner-wrapper .descInfo,
+.container-fuild .container-wrapper .feature-wrapper .descInfo,
+.container-fuild .partner-container .feature-wrapper .descInfo,
+.container-fuild .feature-container .feature-wrapper .descInfo {
+  width: 500px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper {
+  padding: 0;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper p,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper p,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper p,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper p,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper p,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper p,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper p,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper p,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper p {
+  height: 50px;
+  line-height: 50px;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li {
+  list-style: none;
+  padding-bottom: 50px;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li .img-wrapper,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li .img-wrapper {
+  height: 80px;
+  width: 100%;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li .img-wrapper .border,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li .img-wrapper .border {
+  width: 80px;
+  height: 80px;
+  margin: 20px auto;
+  text-align: center;
+  line-height: 75px;
+  border: 1px solid #08aba6;
+  border-radius: 50%;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li .img-wrapper .border-none,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li .img-wrapper .border-none {
+  border: none;
+  margin-bottom: 0;
+  height: 50px;
+  width: 50px;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li .img-wrapper img,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li .img-wrapper img {
+  width: 50px;
+  height: 50px;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li p,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li p,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li p,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li p,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li p,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li p,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li p,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li p,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li p {
+  margin: 0;
+  font-size: 16px;
+  text-align: center;
+  font-weight: normal;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li p.title,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li p.title,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li p.title,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li p.title,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li p.title,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li p.title,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li p.title,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li p.title,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li p.title {
+  margin-top: 10px;
+  color: #443f3f;
+}
+.container-fuild .container-wrapper .approach-wrapper .intro-wrapper li p.desc,
+.container-fuild .partner-container .approach-wrapper .intro-wrapper li p.desc,
+.container-fuild .feature-container .approach-wrapper .intro-wrapper li p.desc,
+.container-fuild .container-wrapper .partner-wrapper .intro-wrapper li p.desc,
+.container-fuild .partner-container .partner-wrapper .intro-wrapper li p.desc,
+.container-fuild .feature-container .partner-wrapper .intro-wrapper li p.desc,
+.container-fuild .container-wrapper .feature-wrapper .intro-wrapper li p.desc,
+.container-fuild .partner-container .feature-wrapper .intro-wrapper li p.desc,
+.container-fuild .feature-container .feature-wrapper .intro-wrapper li p.desc {
+  line-height: 24px;
+  color: #767676;
+}
+.container-fuild .partner-container {
+  padding-bottom: 0;
+}
+.container-fuild .feature-container {
+  padding-bottom: 0;
+  background-color: #a9f3d06e;
+}
+.container-fuild .feature-container p.desc span,
+.container-fuild .feature-container p.title span {
+  font-size: 18px;
+  color: #5e5a5a;
+}
+.container-fuild .feature-container p.title span {
+  font-size: 36px;
+  font-weight: bolder;
+}

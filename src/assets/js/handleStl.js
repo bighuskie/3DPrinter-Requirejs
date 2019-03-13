@@ -60,7 +60,7 @@ define(['loadStl', 'jquery'], function (loadStl, $) {
     var modulePrice;//模型单价
     var printerModel;//打印模式
     var totalMoney;//每个模型总金额
-    var materialPrice = 0.00008;//材料价格
+    var materialPrice = 0.000008;//材料价格
     //根据进度改变的模型尺寸,初始为模型大小
     var pro_moduleX;
     var pro_moduleY;

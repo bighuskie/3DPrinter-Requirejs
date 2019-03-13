@@ -1,0 +1,162 @@
+.container-fuild .bg-wrapper {
+  height: 100%;
+  min-width: 1135px;
+}
+.container-fuild .bg-wrapper .img-wrapper {
+  min-width: 1135px;
+  position: relative;
+  top: -75px;
+  left: 0;
+  z-index: -1;
+  background-color: #000;
+}
+.container-fuild .bg-wrapper .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+.container-fuild .bg-wrapper .text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 300px;
+  margin: -100px 0 0 -350px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+.container-fuild .bg-wrapper .text-wrapper p {
+  line-height: 50px;
+}
+.container-fuild .bg-wrapper .text-wrapper p.bigger {
+  font-size: 90px;
+  line-height: 110px;
+}
+.container-fuild .bg-wrapper .text-wrapper a {
+  display: inline-block;
+  width: 160px;
+  height: 50px;
+  line-height: 50px;
+  text-decoration: none;
+  border-radius: 25px;
+  color: #fff;
+  background-color: #07be3e;
+}
+.container-fuild .info-wrapper {
+  width: 100%;
+  min-width: 1135px;
+}
+.container-fuild .info-wrapper .text {
+  text-align: center;
+  font-size: 25px;
+}
+.container-fuild .info-wrapper .img-wrapper {
+  width: 100%;
+  padding: 0;
+  margin-top: 25px;
+  text-align: center;
+}
+.container-fuild .info-wrapper .img-wrapper li {
+  list-style: none;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border-right: 1px solid #000;
+  text-align: center;
+}
+.container-fuild .info-wrapper .img-wrapper li:last-child {
+  border-right: none;
+}
+.container-fuild .info-wrapper .img-wrapper li p {
+  width: 100px;
+  line-height: 45px;
+  margin: 0 auto;
+  color: #999;
+}
+.container-fuild .info-wrapper .img-wrapper li p.tip {
+  line-height: 20px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #000;
+}
+.container-fuild .info-wrapper .img-wrapper li img {
+  width: 100px;
+  height: 100px;
+}
+.container-fuild .explain-wrapper {
+  width: 100%;
+  text-align: center;
+}
+.container-fuild .explain-wrapper p {
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  font-size: 30px;
+}
+.container-fuild .explain-wrapper div {
+  display: inline-block;
+  width: 500px;
+  height: 300px;
+  line-height: 300px;
+}
+.container-fuild .explain-wrapper div.img {
+  width: 600px;
+  line-height: 300px;
+}
+.container-fuild .explain-wrapper div.img img {
+  width: 600px;
+  height: 300px;
+  vertical-align: middle;
+}
+.container-fuild .explain-wrapper div.text {
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 60px 0 0 20px;
+}
+.container-fuild .explain-wrapper div.text p {
+  width: 600px;
+  height: 40px;
+  text-align: left;
+  line-height: 30px;
+  font-size: 30px;
+}
+.container-fuild .desc-wrapper {
+  width: 100%;
+  min-width: 1135px;
+  height: 500px;
+  background: url("../images/world.png") no-repeat center;
+  background-size: contain;
+  margin: 30px 0 50px 0;
+}
+.container-fuild .desc-wrapper p {
+  text-align: center;
+  font-size: 30px;
+}
+.container-fuild .desc-wrapper .desc {
+  width: 100%;
+  margin-top: 50px;
+  padding: 30px 0;
+  background-color: #ffffffd7;
+}
+.container-fuild .desc-wrapper .desc p {
+  width: 630px;
+  margin: 0 auto;
+}
+.container-fuild .desc-wrapper .explain-wrapper {
+  padding: 0;
+  margin-top: 60px;
+  text-align: center;
+}
+.container-fuild .desc-wrapper .explain-wrapper li {
+  list-style: none;
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  text-align: center;
+}
+.container-fuild .desc-wrapper .explain-wrapper li p {
+  font-size: 40px;
+}
+.container-fuild .desc-wrapper .explain-wrapper li span {
+  font-size: 25px;
+}
