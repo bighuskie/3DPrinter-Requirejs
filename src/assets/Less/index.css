@@ -160,3 +160,16 @@
 .container-fuild .desc-wrapper .explain-wrapper li span {
   font-size: 25px;
 }
+#footer {
+  background: #808080a1;
+}
+#footer div div .f_img {
+  width: 40px;
+  display: inline-block;
+  margin-right: 25px;
+  cursor: pointer;
+}
+#footer div div h3 {
+  color: white;
+  text-align: center;
+}
