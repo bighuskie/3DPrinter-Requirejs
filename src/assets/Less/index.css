@@ -106,11 +106,45 @@
 .container-fuild .explain-wrapper div.img {
   width: 600px;
   line-height: 300px;
+  position: relative;
 }
 .container-fuild .explain-wrapper div.img img {
   width: 600px;
   height: 300px;
   vertical-align: middle;
+}
+.container-fuild .explain-wrapper div.img span {
+  display: none;
+  position: absolute;
+  width: 80px;
+  height: 90px;
+  background-image: url("../images/locate.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon1 {
+  left: 56px;
+  top: 160px;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon2 {
+  left: 168px;
+  top: 139px;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon3 {
+  left: 255px;
+  top: 150px;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon4 {
+  left: 296px;
+  top: 95px;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon5 {
+  right: 105px;
+  top: 118px;
+}
+.container-fuild .explain-wrapper div.img span.locate-icon6 {
+  right: 20px;
+  bottom: 30px;
 }
 .container-fuild .explain-wrapper div.text {
   vertical-align: top;

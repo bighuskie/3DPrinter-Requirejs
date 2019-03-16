@@ -82,7 +82,7 @@
           width: 100px;
           height: 100px;
           transition: transform 1.5s;
-          &:hover{
+          &:hover {
             transform: rotate(360deg);
           }
         }
@@ -106,10 +106,44 @@
       &.img {
         width: 600px;
         line-height: 300px;
+        position: relative;
         img {
           width: 600px;
           height: 300px;
           vertical-align: middle;
+        }
+        span {
+          display: none;
+          position: absolute;
+          width: 80px;
+          height: 90px;
+          background-image: url("../images/locate.png");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          &.locate-icon1 {
+            left: 56px;
+            top: 160px;
+          }
+          &.locate-icon2 {
+            left: 168px;
+            top: 139px;
+          }
+          &.locate-icon3 {
+            left: 255px;
+            top: 150px;
+          }
+          &.locate-icon4 {
+            left: 296px;
+            top: 95px;
+          }
+          &.locate-icon5 {
+            right: 105px;
+            top: 118px;
+          }
+          &.locate-icon6 {
+            right: 20px;
+            bottom: 30px;
+          }
         }
       }
       &.text {
