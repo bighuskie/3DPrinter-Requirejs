@@ -14,6 +14,9 @@
 
 ![首页效果图](./src/assets/images/layout.jpg "首页效果图")
 
-2.  首页效果图
+2.  在线打印效果图
 
-![在线打印效果图](./src/assets/images/printing.png "在线打印效果图")
+![在线打印效果图](./src/assets/images/preview.gif "在线打印效果图")
+
+## 访问性
+目前3D打印云平台还在更新迭代，前后端正在对接，还没部署到生产环境，无法对其进行访问。
