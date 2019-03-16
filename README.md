@@ -7,5 +7,5 @@
     [ThreeJs](https://threejs.org/)
    
 ## 项目效果图
+    1、首页效果图
     ![首页效果图](./assets/images/layout.jpg "首页效果图")
-    
