@@ -13,4 +13,7 @@
 1.  首页效果图
 
 ![首页效果图](./src/assets/images/layout.jpg "首页效果图")
+
+2.  首页效果图
+
 ![在线打印效果图](./src/assets/images/printing.png "在线打印效果图")
