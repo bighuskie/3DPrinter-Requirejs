@@ -47,4 +47,8 @@ body {
   margin-right: 40px;
   font-size: 20px;
   color: white;
+  transition: color 1s;
+}
+.nav-wrapper .list-wrapper ul li:hover {
+  color: #1ac272;
 }

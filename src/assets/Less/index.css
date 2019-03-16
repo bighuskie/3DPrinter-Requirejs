@@ -82,6 +82,10 @@
 .container-fuild .info-wrapper .img-wrapper li img {
   width: 100px;
   height: 100px;
+  transition: transform 1.5s;
+}
+.container-fuild .info-wrapper .img-wrapper li img:hover {
+  transform: rotate(360deg);
 }
 .container-fuild .explain-wrapper {
   width: 100%;
