@@ -6,5 +6,6 @@
 * [jQuery](https://www.jquery123.com/)
 * [ThreeJs](https://threejs.org/)
 ## 项目效果图
+   1、首页效果
    ![首页效果图](./src/assets/images/layout.jpg "首页效果图")
     
